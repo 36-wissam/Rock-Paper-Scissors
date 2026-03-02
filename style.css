@@ -19,7 +19,7 @@ h1{
 
 }
 .game{
-    min-width: 270px;
+    min-width: 450px;
     display: flex;
     flex-direction: column;
     justify-content: center;
