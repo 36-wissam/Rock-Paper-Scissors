@@ -81,7 +81,7 @@ button:active{
     border-radius: 10px;
 }
 
-.foote{
+.footer{
     display: flex;
     justify-content: center;
     margin-top: auto;
