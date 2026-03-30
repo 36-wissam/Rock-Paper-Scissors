@@ -1,18 +1,27 @@
-// akfor bkol al paragraphat 
-document.addEventListener("DOMContentLoaded", function () {
+const rockBtn = document.getElementById('rockBtn'); //to get the rock button value
+const paperBtn = document.getElementById('paperBtn'); //to get the paper button value
+const scissorBtn = document.getElementById('scissorBtn'); //to get the scissor button value
+const PCHOICE = document.getElementById('playerChoice'); // player choice paragraph
+const COMPCHOICE = document.getElementById('computerChoice'); // player choice paragraph
+const newtext = document.getElementById('paragraphtext'); // game staus paragraph
+const scoreP = document.getElementById('playerscore'); // player score paragraph
+const scoreC = document.getElementById('compscore'); // computer score paragraph
+const popup = document.querySelector('.popup'); // popup element
+const finalResult = document.getElementById('finalResult'); // final result element
+const playAgainBtn = document.getElementById('playAgainBtn'); // play again button  
 
-    const rockBtn = document.getElementById('rockBtn'); //to get the rock button value
-    const paperBtn = document.getElementById('paperBtn'); //to get the paper button value
-    const scissorBtn = document.getElementById('scissorBtn'); //to get the scissor button value
-    const PCHOICE = document.getElementById('playerChoice'); // player choice paragraph
-    const COMPCHOICE = document.getElementById('computerChoice'); // player choice paragraph
-    const newtext = document.getElementById('paragraphtext'); // game staus paragraph
-    const scoreP = document.getElementById('playerscore'); // player score paragraph
-    const scoreC = document.getElementById('compscore'); // computer score paragraph
-    let humanScore = 0; //fvar for human score
-    let computerScore = 0; // var for compter score
 
-    
+// varis for sound effects
+const winSound = new Audio('/src/sounds/win.mp3');
+const loseSound = new Audio('/src/sounds/lose.mp3');
+
+
+
+let humanScore = 0; //var for human score
+let computerScore = 0; // var for compter score
+
+
+
 
     // function to generate compute choice
     function getComputerChoice(){
@@ -93,21 +102,31 @@ document.addEventListener("DOMContentLoaded", function () {
         
         // for score status and reset the game
         if (humanScore === 5) {
-            newtext.textContent = "VICTORY IS YOURS ! ("+humanScore+"-"+computerScore+")";
-            humanScore=0;
-            computerScore=0;
-            scoreP.textContent="YOURE SCORE : 0";
-            scoreC.textContent="COMPUTER SCORE : 0";
+            winSound.play();
+            popup.style.display = 'flex';
+            finalResult.textContent = "YOU WON! (" + humanScore + "-" + computerScore + ")";
         }
         // if the computer win
         else if(computerScore===5){
-            newtext.textContent ="YOU LOST THE GAME! ("+humanScore+"-"+computerScore+")";
-            humanScore=0;
-            computerScore=0;
-            scoreP.textContent="YOURE SCORE : 0";
-            scoreC.textContent="COMPUTER SCORE : 0";
+            loseSound.play();
+            popup.style.display = 'flex';
+            finalResult.textContent = "YOU LOST! (" + humanScore + "-" + computerScore + ")";
+            
         }
     }
+
+
+    // play again button event
+    playAgainBtn.addEventListener('click', () => {
+        popup.style.display = 'none';
+        humanScore = 0;
+        computerScore = 0;
+        scoreP.textContent = "YOUR SCORE : 0";
+        scoreC.textContent = "COMPUTER SCORE : 0";
+        newtext.textContent = "Start playing!";
+        PCHOICE.textContent = "PLAYER :";
+        COMPCHOICE.textContent = "COMPUTER :";
+    });
 
 
     // event listener for the buttons
@@ -122,5 +141,3 @@ document.addEventListener("DOMContentLoaded", function () {
     scissorBtn.addEventListener('click',()=>{
         Gamelogic("scissors", getComputerChoice());
     });
-
-});
