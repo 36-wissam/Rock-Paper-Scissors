@@ -9,7 +9,15 @@ const scoreC = document.getElementById('compscore'); // computer score paragraph
 const popup = document.querySelector('.popup'); // popup element
 const finalResult = document.getElementById('finalResult'); // final result element
 const playAgainBtn = document.getElementById('playAgainBtn'); // play again button  
-let humanScore = 0; //fvar for human score
+
+
+// varis for sound effects
+const winSound = new Audio('/src/sounds/win.mp3');
+const loseSound = new Audio('/src/sounds/lose.mp3');
+
+
+
+let humanScore = 0; //var for human score
 let computerScore = 0; // var for compter score
 
 
@@ -94,11 +102,13 @@ let computerScore = 0; // var for compter score
         
         // for score status and reset the game
         if (humanScore === 5) {
+            winSound.play();
             popup.style.display = 'flex';
             finalResult.textContent = "YOU WON! (" + humanScore + "-" + computerScore + ")";
         }
         // if the computer win
         else if(computerScore===5){
+            loseSound.play();
             popup.style.display = 'flex';
             finalResult.textContent = "YOU LOST! (" + humanScore + "-" + computerScore + ")";
             

@@ -4,6 +4,11 @@ First javascript project **The Odin Project – JavaScript Basics**.
 This project focuses on how to Code html and css website with javascript by coding baisc  Rock Paper Scissors game.
 
 ---
+# Link
+
+[play the game](http://rps.wissam.tech/) .
+
+---
 
 ## Technologies Used
 
@@ -18,16 +23,17 @@ This project focuses on how to Code html and css website with javascript by codi
 - `index.html` – game structure  
 - `style.css` – Styling and layout game buttons and paragraphs 
 - `script.js` –  Javascript file for the game logic
-- `src/` – Images used in the game page  
+- `src/` – Images and sounds used in the game page  
 
 ---
 
 ## What I Learned
-
+- How to add sounds in javascript
 - some css styles like shadows , transform and more !
 - How to get value and change paragraph using getElementById and  eventListener
 - How to `if statement`, `funcions`, `switch case` and `DOMContentLoaded` (to make sure that all the website loaded)
-
+- How to make nice popup box
+- Understand the `DOM`
 ---
 
 ## Acknowledgments
